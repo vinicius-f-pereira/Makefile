@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "greeter.h"
+#include "../greeter.h"
 
 void greeter(char *name)
 {

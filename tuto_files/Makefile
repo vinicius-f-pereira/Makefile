@@ -1,8 +1,10 @@
-foo: main.o greeter.o
-	gcc -o foo main.o greeter.o
+NAME := foo
+OBJFILES := obj/main.o obj/greeter.o
+LDFLAGS ?=
+CFLAGS ?= -Wall -Wextra -Werror
 
-main.o: main.c
-	gcc -c -Wall -Wextra -Werror -o main.o main.c
+$(NAME): $(OBJFILES)
+	$(CC) $(LDFLAGS) -o $@ $^
 
-greeter.o: greeter.c
-	gcc -c -Wall -Wextra -Werror -o greeter.o greeter.c
+obj/%.o: src/%.c
+	$(CC) -c $(CFLAGS) -o $@ $^
